@@ -13,6 +13,7 @@ Usage:
 
 Available Commands:
   get         http get request
+  head        http head request
   help        Help about any command
   version     Print the version number of go-man
 
@@ -36,5 +37,5 @@ $ ./go-man get -p http://localhost:8080
 
 ## TODO
 ### In Progress
-- [ ] [IN PROGRESS] delete/head/post/put
+- [ ] [IN PROGRESS] delete/post/put
 - [ ] [IN PROGRESS] Automatic examination by scenario
