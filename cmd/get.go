@@ -34,10 +34,10 @@ func get(args []string) {
 		return
 	}
 
-	execute(args[0])
+	getExecute(args[0])
 }
 
-func execute(ip string) {
+func getExecute(ip string) {
 
 	prettyFlag, err := goCmd.PersistentFlags().GetBool("pretty")
 	if err != nil {
