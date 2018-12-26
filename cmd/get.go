@@ -56,7 +56,7 @@ func getExecute(ip string) {
 
 	if resp.StatusCode != 200 {
 
-		fmt.Println("StatusCode= %v\n", resp.StatusCode)
+		fmt.Printf("StatusCode= %v\n", resp.StatusCode)
 		fmt.Printf("Status= %v\n", resp.Status)
 		fmt.Println(string(respByte))
 		return
