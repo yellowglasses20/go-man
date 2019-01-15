@@ -10,6 +10,7 @@ var goCmd = &cobra.Command{
 	Long:  `go-man is simple API test tool.`,
 }
 
+//NewGoManCommand NewGoManCommand is return go-man command.
 func NewGoManCommand() *cobra.Command {
 	return goCmd
 }
