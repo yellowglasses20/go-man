@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strings"
 
 	"github.com/hokaccha/go-prettyjson"
 	"github.com/spf13/cobra"
@@ -13,6 +14,7 @@ import (
 func init() {
 	goCmd.AddCommand(getCmd)
 	goCmd.PersistentFlags().BoolP("pretty", "p", false, "Pretty print")
+	goCmd.PersistentFlags().StringArrayP("Headers", "H", nil, "Any HTTP headers(-H \"Authorization:Bearer token\")")
 }
 
 var getCmd = &cobra.Command{
@@ -44,8 +46,27 @@ func getExecute(ip string) {
 		fmt.Println(err)
 		return
 	}
+	headers, err := goCmd.PersistentFlags().GetStringArray("Headers")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
-	resp, err := http.Get(ip)
+	req, err := http.NewRequest("GET", ip, nil)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	for _, d := range headers {
+		values := strings.Split(d, ":")
+		if len(values) == 2 {
+			req.Header.Set(values[0], values[1])
+		}
+	}
+
+	client := new(http.Client)
+	resp, err := client.Do(req)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -56,7 +77,7 @@ func getExecute(ip string) {
 
 	if resp.StatusCode != 200 {
 
-		fmt.Println("StatusCode= %v\n", resp.StatusCode)
+		fmt.Printf("StatusCode= %v\n", resp.StatusCode)
 		fmt.Printf("Status= %v\n", resp.Status)
 		fmt.Println(string(respByte))
 		return
