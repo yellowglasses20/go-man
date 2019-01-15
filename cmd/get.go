@@ -83,7 +83,8 @@ func getExecute(ip string) {
 		return
 	}
 
-	if prettyFlag == true && resp.Header.Get("Content-Type") == "application/json" {
+	contentType := resp.Header.Get("Content-Type")
+	if prettyFlag == true && strings.Contains(contentType, "application/json") {
 
 		var tmp interface{}
 
