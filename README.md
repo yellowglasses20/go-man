@@ -18,6 +18,7 @@ Available Commands:
   version     Print the version number of go-man
 
 Flags:
+  -H, --Headers stringArray   Any HTTP headers(-H "Authorization:Bearer token")
   -h, --help     help for go-man
   -p, --pretty   Pretty print
 
