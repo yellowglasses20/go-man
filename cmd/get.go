@@ -46,6 +46,7 @@ func getExecute(ip string) {
 		fmt.Println(err)
 		return
 	}
+
 	headers, err := goCmd.PersistentFlags().GetStringArray("Headers")
 	if err != nil {
 		fmt.Println(err)
