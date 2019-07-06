@@ -38,5 +38,5 @@ $ ./go-man get -p http://localhost:8080
 
 ## TODO
 ### In Progress
-- [ ] [IN PROGRESS] delete/post/put
+- [ ] [IN PROGRESS] delete/put
 - [ ] [IN PROGRESS] Automatic examination by scenario
